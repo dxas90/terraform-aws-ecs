@@ -93,7 +93,7 @@ resource "aws_security_group_rule" "allow_all_from_10" {
   from_port         = 8080
   to_port           = 9000
   protocol          = "tcp"
-  cidr_blocks       = ["10.0.0.0/0"]
+  cidr_blocks       = ["10.0.0.0/8"]
   security_group_id = "${aws_security_group.instance.id}"
 }
 
@@ -101,7 +101,7 @@ resource "aws_security_group_rule" "instance_out_all" {
   type              = "egress"
   from_port         = 0
   to_port           = 65535
-  protocol          = "tcp"
+  protocol          = "-1"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = "${aws_security_group.instance.id}"
 }
