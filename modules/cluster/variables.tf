@@ -3,6 +3,11 @@ variable "additional_user_data_script" {
   default     = ""
 }
 
+variable "s3_repo_bucket" {
+  description = "repo to pull wars from"
+  default = "brivo-warbuffet"
+}
+
 variable "asg_max_size" {
   description = "Maximum number EC2 instances"
   default     = 2
