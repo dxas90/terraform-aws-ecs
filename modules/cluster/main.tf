@@ -38,7 +38,30 @@ data "aws_iam_policy_document" "instance_policy" {
       "${aws_cloudwatch_log_group.instance.arn}",
     ]
   }
+
+  statement {
+    sid = "InstanceLogging"
+
+    actions = [
+      "s3:*"
+    ]
+
+    resources = [
+      "${data.aws_s3_bucket.warbucket.arn}"
+    ]
+  }
 }
+
+resource "aws_iam_policy" "instance_policy" {
+  name   = "${var.name}-ecs-instance"
+  path   = "/"
+  policy = "${data.aws_iam_policy_document.instance_policy.json}"
+}
+
+data "aws_s3_bucket" "warbucket" {
+  name = "${var.s3_repo_bucket}"
+}
+
 
 resource "aws_iam_policy" "instance_policy" {
   name   = "${var.name}-ecs-instance"
