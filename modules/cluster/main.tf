@@ -53,7 +53,7 @@ data "aws_iam_policy_document" "instance_policy" {
 }
 
 data "aws_s3_bucket" "warbucket" {
-  name = "${var.s3_repo_bucket}"
+  bucket = "${var.s3_repo_bucket}"
 }
 
 
