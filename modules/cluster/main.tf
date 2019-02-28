@@ -40,7 +40,7 @@ data "aws_iam_policy_document" "instance_policy" {
   }
 
   statement {
-    sid = "InstanceLogging"
+    sid = "BucketAccessPolicy"
 
     actions = [
       "s3:*"
