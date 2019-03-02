@@ -47,7 +47,8 @@ data "aws_iam_policy_document" "instance_policy" {
     ]
 
     resources = [
-      "${data.aws_s3_bucket.warbucket.arn}"
+      "${data.aws_s3_bucket.warbucket.arn}",
+      "${data.aws_s3_bucket.warbucket.arn}/*"
     ]
   }
 }
